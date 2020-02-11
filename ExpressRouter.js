@@ -31,6 +31,21 @@ router.get('/', (req, res) =>{
     })
 })
 
+router.get('/:id/comments', (req, res) =>{
+    const {id} = req.params;
+    Data.findCommentById(id)
+    .then(comments => {
+        if(!id){
+            res.status(404).json({message:'No post with that ID located'})
+        }else{
+             res.status(200).json(comments)
+        }       
+    })
+    .catch(err => {
+        res.status(500).json({errorMessage:'Sorry we couldnt get those comments for you'})
+    })
+})
+
 // router.post('/:id/comments', (req, res) =>{
 //     const { id } = req.params;
 //     const { text } = req.body;

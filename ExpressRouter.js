@@ -44,7 +44,7 @@ router.get('/:id', (req,res) =>{
     .catch(err =>{
         res.status(500).json({errorMessage:'Cannot get post'})
     })
-})
+}) //displays
 
 router.get('/:id/comments', (req, res) =>{
     const {id} = req.params;  
@@ -112,7 +112,7 @@ router.put('/:id', (req, res) => {
         })
         .catch(err =>{
             res.status(500).json({errorMessage:'Post does not exist'})
-        })
+        })//should i be 404?
 
     }
 }) //working
